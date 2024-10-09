@@ -6,8 +6,22 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        dominante: {
+          forte: "#EDECE5",
+          fraca: "#FFFFFF",
+        },
+        secundaria: {
+          forte: "#F55B2D",
+          fraca: "#F68C42",
+        },
+        destaque: {
+          forte: "#F4D641",
+          fraca: "#F4C042",
+        },
+      },
+    },
   },
   plugins: [],
-}
-
+};
