@@ -2,23 +2,11 @@ import { IconButton } from "@mui/material";
 import { Calendar, Clock, MapPin, Star, StarHalf } from "lucide-react";
 import React from "react";
 
-export function Card() {
-  const mock: TypeFeira = {
-    id: "123",
-    name: "Lorem ipsum dolor sit amet.",
-    address: "R. Dos Bobos, 00",
-    number: "123",
-    city: "Lorem ipsum dolor sit amet.",
-    description: "Lorem ipsum dolor sit amet.",
-    image: "https://via.placeholder.com/331x100",
-    feiranteID: "123",
-    date: new Date(),
-    tags: [
-      { id: "123", name: "Tag 1" },
-      { id: "123", name: "Tag 2" },
-    ],
-    nota: 3.5,
-  };
+interface Props {
+  mock: TypeFeira;
+}
+
+export function Card({ mock }: Props) {
   const [stared, setStared] = React.useState(false);
 
   return (
