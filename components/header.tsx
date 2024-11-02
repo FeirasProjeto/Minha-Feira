@@ -1,10 +1,11 @@
 import { Avatar } from "@mui/material";
+import Link from "next/link";
 
 export default function Header() {
-    // list of all the options on header
+  // list of all the options on header
   let items = ["Início", "Sobre", "Contato", "Mapa"];
 
-    // WIP selected header
+  // WIP selected header
   let atual = "Mapa";
   return (
     <header className="w-full flex justify-between h-20 bg-destaque-forte items-center px-5 border-b border-b-black">
@@ -16,14 +17,16 @@ export default function Header() {
                 cursor-pointer
                 px-5
                 transition-colors h-full flex justify-center items-center text-2xl ${
-              atual === item ? "bg-dominante-fraca" : ""
-            }`}
+                  atual === item ? "bg-dominante-fraca" : ""
+                }`}
           >
             {item}
           </p>
         ))}
       </div>
-      <Avatar />
+      <Link href={'/login'} className="rounded-full">
+        <Avatar />
+      </Link>
     </header>
   );
 }
