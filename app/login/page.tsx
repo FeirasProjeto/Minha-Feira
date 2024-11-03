@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "../../components/header";
 import { IconButton, TextField } from "@mui/material";
 import { Eye, EyeClosed } from "lucide-react";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -109,9 +110,9 @@ export default function LoginPage() {
               />
             </div>
           </div>
-          <p className="hover:underline hover:cursor-pointer select-none text-sm w-fit">
+          <Link href="/login/forgot" className="underline hover:no-underline hover:cursor-pointer select-none text-sm w-fit z-50">
             Esqueceu senha?
-          </p>
+          </Link>
           {error && <p className="text-red-500">{error}</p>}
           <button
             type="submit"
@@ -121,9 +122,12 @@ export default function LoginPage() {
             {loading ? "Loading..." : "Entrar"}
           </button>
         </div>
-        <p className="hover:underline hover:cursor-pointer select-none text-[10px]  w-fit">
+        <Link
+          href="/register"
+          className="underline hover:no-underline hover:cursor-pointer select-none text-[10px] w-fit z-50"
+        >
           Não tem uma conta ainda? <b>Crie uma de graça</b>
-        </p>
+        </Link>
       </div>
     </div>
   );
