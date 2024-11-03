@@ -8,7 +8,7 @@ export default function Header() {
   // WIP selected header
   let atual = "Mapa";
   return (
-    <header className="w-full flex justify-between h-20 bg-destaque-forte items-center px-5 border-b border-b-black">
+    <header className="w-full flex justify-between h-20 bg-destaque-forte items-center px-5 shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
       <img src="./logo.svg" className="h-12" />
       <div className="w-fit h-full flex">
         {items.map((item) => (
