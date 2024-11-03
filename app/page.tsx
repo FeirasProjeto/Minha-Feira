@@ -9,14 +9,20 @@ import { Link } from "lucide-react";
 
 export default function HomePage() {
   const [mockData, setMockData] = useState(feirasArray);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <div className="flex flex-col h-screen bg-[url('https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/02/google-maps-e1707316052388.png?w=1200&h=900&crop=1')]">
       <Header />
       <Drawer
         anchor="left"
-        open={true}
-        variant="persistent"
-        onClose={() => setMockData([])}
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setDrawerOpen(false);
+          }
+        }}
+        BackdropComponent={() => <div />}
         sx={{
           ".MuiDrawer-paper": {
             position: "fixed",
@@ -37,6 +43,12 @@ export default function HomePage() {
           ))}
         </div>
       </Drawer>
+      <div
+        className={`${drawerOpen ? "hidden" : "block"}`}
+        onClick={() => setDrawerOpen(true)}
+      >
+        <Search mock={mockData} setMockData={setMockData} />
+      </div>
       <a
         href="/cadastro"
         className="absolute bottom-3 right-3 hover:opacity-80 transition-all bg-secundaria-forte text-white px-4 py-2 rounded-2xl"
