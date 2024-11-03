@@ -44,7 +44,7 @@ export default function HomePage() {
         </div>
       </Drawer>
       <div
-        className={`${drawerOpen ? "hidden" : "block"}`}
+        className={`${drawerOpen ? "hidden" : "block"} m-2`}
         onClick={() => setDrawerOpen(true)}
       >
         <Search mock={mockData} setMockData={setMockData} />
