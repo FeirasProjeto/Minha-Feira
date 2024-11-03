@@ -10,29 +10,34 @@ interface Props {
 export function Search({ mock, setMockData }: Props) {
   const [input, setInput] = useState("");
   return (
-    <div className="flex w-full sticky top-0 z-50 rounded-2xl overflow-hidden border border-black bg-white">
-      {/* TODO fix border on hover */}
+    <div className="flex w-full sticky top-0 z-50 rounded-2xl mb-5">
       <Autocomplete
         freeSolo
-        disableClearable
         sx={{
           width: "100%",
+          ".MuiInputBase-root": {
+            backgroundColor: "rgba(255, 255, 255)",
+            borderRadius: "12px",
+            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+          },
         }}
         options={mock.map((option) => option.name)}
         renderInput={(params) => (
           <TextField
             {...params}
             sx={{
-              width: "100%",
+              ".MuiInputBase-root": {
+                borderRadius: "12px",
+              },
             }}
-            label="Search input"
-            className="w-full rounded-xl overflow-hidden "
+            label="Pesquisar"
+            className="w-full rounded-xl"
             slotProps={{
               input: {
                 ...params.InputProps,
                 type: "search",
                 endAdornment: (
-                  <div className="flex w-fit absolute right-0 top-0 h-full bg-secundaria-fraca items-center">
+                  <div className="flex w-fit absolute right-0 top-0 h-full bg-secundaria-fraca items-center rounded-r-xl overflow-hidden">
                     <IconButton
                       onClick={() => {
                         setMockData(
