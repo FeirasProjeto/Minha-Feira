@@ -5,7 +5,7 @@ import Header from "../components/header";
 import { Card } from "../components/card";
 import { Search } from "../components/search";
 import { feirasArray } from "../mock/feiras";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 export default function HomePage() {
   const [mockData, setMockData] = useState(feirasArray);
@@ -49,12 +49,11 @@ export default function HomePage() {
       >
         <Search mock={mockData} setMockData={setMockData} />
       </div>
-      <a
-        href="/cadastro"
-        className="absolute bottom-3 right-3 hover:opacity-80 transition-all bg-secundaria-forte text-white px-4 py-2 rounded-2xl"
-      >
-        Cadastrar feira
-      </a>
+      <Link href="/cadastro">
+        <p className="absolute bottom-3 right-3 hover:opacity-80 transition-all bg-secundaria-forte text-white px-4 py-2 rounded-2xl">
+          Cadastrar feira
+        </p>
+      </Link>
     </div>
   );
 }

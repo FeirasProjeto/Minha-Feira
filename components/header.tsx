@@ -9,7 +9,9 @@ export default function Header() {
   let atual = "Mapa";
   return (
     <header className="w-full flex justify-between h-20 bg-destaque-forte items-center px-5 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] z-50">
-      <img src="./logo.svg" className="h-12" />
+      <Link href={"/"}>
+        <img src="./logo.svg" className="h-12" />
+      </Link>
       <div className="w-fit h-full flex">
         {items.map((item) => (
           <p
@@ -24,7 +26,7 @@ export default function Header() {
           </p>
         ))}
       </div>
-      <Link href={'/login'} className="rounded-full">
+      <Link href={"/login"} className="rounded-full">
         <Avatar />
       </Link>
     </header>
