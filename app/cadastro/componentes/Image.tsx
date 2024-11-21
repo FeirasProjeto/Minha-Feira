@@ -6,7 +6,7 @@ export function Image() {
       <div className="w-full h-32 bg-white rounded-xl flex justify-center items-center shadow-big">
         <ImagePlus size={100} />
       </div>
-      <button className="text-black bg-white rounded-xl w-full flex justify-evenly py-2 text-2xl items-center shadow-big">
+      <button className="text-black bg-white rounded-xl w-full flex justify-evenly py-2 px-10 text-2xl items-center shadow-big">
         <p>Adicionar imagem</p>
         <Plus />
       </button>

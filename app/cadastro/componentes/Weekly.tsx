@@ -14,13 +14,13 @@ export function Weekly({ weekdays, setWeekdays }: Props) {
     "Domingo",
   ];
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 ">
       <label className="text-black text-2xl">Semanal?</label>
       <div className="flex flex-col w-full bg-white shadow-big rounded-xl">
         {dias.map((dia) => (
           <div
             className={
-              "flex items-center justify-between w-full px-3 py-1 " +
+              "flex items-center justify-between w-full px-5 py-1 gap-5 " +
               (dia === "Domingo" ? "" : "border-b border-black/5")
             }
           >
