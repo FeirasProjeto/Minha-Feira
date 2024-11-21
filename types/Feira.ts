@@ -1,16 +1,16 @@
 type TypeFeira = {
     id: string,
-    name: string,
-    address: string,
-    number: string,
-    city: string,
-    description: string,
-    image: string,
-    feiranteID: string,
-    date: Date,
+    nome: string,
+    endereco: string,
+    numero: string,
+    cidade: string,
+    descricao: string,
+    imagem: string,
+    userId: string,
+    data: string,
     tags: {
         id: string,
-        name: string
+        nome: string
     }[],
     nota: number
 }

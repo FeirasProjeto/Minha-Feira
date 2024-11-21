@@ -14,12 +14,12 @@ export function Card({ mock }: Props) {
       <div className="flex justify-between">
         <div className="flex flex-col">
           <div className="text-lg font-bold text-secundaria-forte">
-            {mock.name}
+            {mock.nome}
           </div>
           <div className="flex gap-2">
-            {mock.tags.map((tag) => (
+            {mock.tags?.map((tag) => (
               <div className="bg-secundaria-forte rounded-full  px-2 py-1 ">
-                <div className="text-white">{tag.name}</div>
+                <div className="text-white">{tag.nome}</div>
               </div>
             ))}
           </div>
@@ -53,17 +53,17 @@ export function Card({ mock }: Props) {
         </IconButton>
       </div>
       <div className="mt-5">
-        <img src={mock.image} alt="" className="w-full rounded-lg" />
+        <img src={mock.imagem} alt="" className="w-full rounded-lg" />
       </div>
       <div className="mt-5 flex justify-between font-semibold">
         <div className="flex items-center gap-2">
           <MapPin className="text-secundaria-forte" />
-          <div className="text-sm text-secundaria-forte">{mock.address}</div>
+          <div className="text-sm text-secundaria-forte">{mock.endereco}</div>
         </div>
         <div className="flex items-center gap-2">
           <Calendar className="text-secundaria-forte" />
           <div className="text-sm text-secundaria-forte">
-            {mock.date.toLocaleDateString("pt-BR", {
+            {new Date(mock.data).toLocaleDateString("pt-BR", {
               day: "numeric",
               month: "long",
               year: "numeric",
@@ -74,9 +74,9 @@ export function Card({ mock }: Props) {
           <Clock className="text-secundaria-forte" />
           <div className="text-sm text-secundaria-forte">
             Ás{" "}
-            {mock.date.getHours().toString().padStart(2, "0") +
+            {new Date(mock.data).getHours().toString().padStart(2, "0") +
               ":" +
-              mock.date.getMinutes().toString().padStart(2, "0")}
+              new Date(mock.data).getMinutes().toString().padStart(2, "0")}
           </div>
         </div>
       </div>

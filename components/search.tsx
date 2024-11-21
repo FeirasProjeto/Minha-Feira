@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function Search({ mock, setMockData }: Props) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("")
   return (
     <div className="flex w-full sticky top-0 z-50 rounded-2xl mb-5">
       <Autocomplete
@@ -21,7 +21,7 @@ export function Search({ mock, setMockData }: Props) {
             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
           },
         }}
-        options={mock.map((option) => option.name)}
+        options={mock.map((option) => option.nome)}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -42,7 +42,7 @@ export function Search({ mock, setMockData }: Props) {
                       onClick={() => {
                         setMockData(
                           mock.filter((option) =>
-                            option.name
+                            option.nome
                               .toLowerCase()
                               .includes(input.toLowerCase())
                           )

@@ -1,14 +1,23 @@
 "use client";
 import { Drawer } from "@mui/material";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import Header from "../components/header";
 import { Card } from "../components/card";
 import { Search } from "../components/search";
-import { feirasArray } from "../mock/feiras";
 import Link from "next/link";
+import { getFeiras } from "../hooks/Feiras";
 
 export default function HomePage() {
-  const [mockData, setMockData] = useState(feirasArray);
+  // const [mockData, setMockData] = useState(feirasArray);
+  const [feiras, setFeiras] = useState<TypeFeira[]>([]);
+  useEffect(() => {
+    const fetchFeiras = async () => {
+      const feiras = await getFeiras();
+      setFeiras(feiras);
+    };
+    fetchFeiras();
+  });
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <div className="flex flex-col h-screen bg-[url('https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/02/google-maps-e1707316052388.png?w=1200&h=900&crop=1')]">
@@ -35,10 +44,10 @@ export default function HomePage() {
         }}
       >
         <div className="sticky top-4 mx-4 z-50">
-          <Search mock={mockData} setMockData={setMockData} />
+          <Search mock={feiras} setMockData={setFeiras} />
         </div>
         <div className="flex flex-wrap gap-5 p-5">
-          {mockData.map((mock) => (
+          {feiras.map((mock) => (
             <Card key={mock.id} mock={mock} />
           ))}
         </div>
@@ -47,7 +56,7 @@ export default function HomePage() {
         className={`${drawerOpen ? "hidden" : "block"} m-2`}
         onClick={() => setDrawerOpen(true)}
       >
-        <Search mock={mockData} setMockData={setMockData} />
+        <Search mock={feiras} setMockData={setFeiras} />
       </div>
       <Link href="/cadastro">
         <p className="absolute bottom-3 right-3 hover:opacity-80 transition-all bg-secundaria-forte text-white px-4 py-2 rounded-2xl">
