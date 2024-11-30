@@ -1,21 +1,18 @@
-type TypeFeira = {
-  id: string;
+type addFeira = {
   nome: string;
   endereco: string;
   numero: string;
   cidade: string;
+  coordenada: string;
   horario: string;
   data: string;
   descricao: string;
   imagem: string;
-  tags: {
-    id: string;
-    nome: string;
-  }[];
   diaSemana: {
     id: string;
-    dia: string;
+  }[];
+  tags: {
+    id: string;
   }[];
   userId: string;
-  nota: number;
 };

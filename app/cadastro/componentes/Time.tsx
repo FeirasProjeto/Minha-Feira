@@ -3,9 +3,10 @@ interface Props {
   placeholder: string;
   required: boolean;
   onChange: (e: string) => void;
+  value: string;
 }
 
-export function Time({ label, placeholder, required, onChange }: Props) {
+export function Time({ label, placeholder, required, onChange, value }: Props) {
   return (
     <div className="flex flex-col w-full">
       <label className="text-black text-2xl">
@@ -15,6 +16,7 @@ export function Time({ label, placeholder, required, onChange }: Props) {
         type="time"
         placeholder={placeholder}
         required={required}
+        value={value} 
         onChange={(e) => onChange(e.target.value)}
         className="bg-white rounded-xl p-2 text-black shadow-big pl-5"
         step={60}

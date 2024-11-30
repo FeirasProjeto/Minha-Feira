@@ -4,9 +4,10 @@ interface Props {
   required: boolean;
   type: string;
   onChange: (e: string) => void;
+  value: string;
 }
 
-export function Input({ label, placeholder, required, type, onChange }: Props) {
+export function Input({ label, placeholder, required, type, onChange, value }: Props) {
   return (
     <div className="flex flex-col w-full">
       <label className="text-black text-2xl">
@@ -16,6 +17,7 @@ export function Input({ label, placeholder, required, type, onChange }: Props) {
         type={type}
         placeholder={placeholder}
         required={required}
+        value={value}
         onChange={(e) => onChange(e.target.value)}
         className="bg-white rounded-xl p-2 text-black shadow-big pl-5"
       />

@@ -4,15 +4,33 @@ import Header from "../../components/header";
 import { Image } from "./componentes/Image";
 import { Banner } from "../../components/banner";
 import { Input } from "./componentes/Input";
-import { Map } from "./componentes/Map";
 import { Select } from "./componentes/Select";
 import { Weekly } from "./componentes/Weekly";
 import { TextField } from "./componentes/TextField";
 import { Time } from "./componentes/Time";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { DateInput } from "./componentes/DateInput";
+import { Switch } from "@mui/material";
+import { sendFeira } from "../../hooks/Feiras";
 
 export default function CadastroPage() {
+  const [weekly, setWeekly] = useState(false);
+  const [feira, setFeira] = useState<addFeira>({
+    nome: "Feira",
+    endereco: "Endereço",
+    numero: "0",
+    cidade: "",
+    coordenada: "", //TODO
+    horario: "",
+    data: "",
+    descricao: "Descrição",
+    imagem: "https://via.placeholder.com/150",
+    diaSemana: [],
+    tags: [],
+    userId: "c1a45f50-f8a4-4dc1-b9f3-d3a7e556a813", //TODO
+  });
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-r from-[#C4C4C410] to-[#8c8c8c10]">
       <Header />
@@ -28,69 +46,118 @@ export default function CadastroPage() {
         <Banner />
         <div className="flex gap-4">
           <div className="flex flex-col gap-4">
-            <Image />
+            <Image
+              onClick={() => {
+                const input = window.prompt(
+                  "Adicione aqui o link da imagem",
+                  ""
+                );
+                if (input) {
+                  setFeira({
+                    ...feira,
+                    imagem: input,
+                  });
+                }
+              }}
+              value={feira.imagem}
+            />
             <Input
               label="Nome da feira:"
               placeholder="Adicione aqui o nome da feira"
               required
               type="text"
-              onChange={(e) => console.log(e)}
+              onChange={(e) =>
+                setFeira({
+                  ...feira,
+                  nome: e,
+                })
+              }
+              value={feira.nome}
             />
             <Input
               label="Endereço:"
               placeholder="Adicione aqui o endereço"
               required
               type="text"
-              onChange={(e) => console.log(e)}
+              onChange={(e) =>
+                setFeira({
+                  ...feira,
+                  endereco: e,
+                })
+              }
+              value={feira.endereco}
+            />
+            <Input
+              label="Número:"
+              placeholder="Número da feira"
+              required
+              type="text"
+              onChange={(e) =>
+                setFeira({
+                  ...feira,
+                  numero: e,
+                })
+              }
+              value={feira.numero}
             />
           </div>
           <div className="flex flex-col gap-4">
             {/* <Map /> */}
             <div className="flex gap-4">
-              <Weekly
-                weekdays={[
-                  "Segunda",
-                  "Terça",
-                  "Quarta",
-                  "Quinta",
-                  "Sexta",
-                  "Sábado",
-                  "Domingo",
-                ]}
-                setWeekdays={() => {}}
-              />
-              <div className="flex flex-col">
+              <div className="flex flex-col w-full">
+                {/* <div>
+                  <div className="flex justify-between text-2xl">
+                    <h1>{weekly ? "Semanal" : "Não semanal"}</h1>
+                    <Switch onChange={(e) => setWeekly(e.target.checked)} />
+                  </div>
+                  {weekly ? (
+                    <Weekly
+                      weekdays={feira.diaSemana}
+                      onChange={(e: string, bool: boolean) => {
+                        if (bool) {
+                          setFeira({
+                            ...feira,
+                            diaSemana: [
+                              ...feira.diaSemana,
+                              { id: feira.id, dia: e },
+                            ],
+                          });
+                        } else {
+                          setFeira({
+                            ...feira,
+                            diaSemana: feira.diaSemana.filter(
+                              (item) => item.dia !== e
+                            ),
+                          });
+                        }
+                      }}
+                    />
+                  ) : (
+                    <DateInput
+                      onChange={(e) => setFeira({ ...feira, data: e })}
+                      value={feira.data}
+                    />
+                  )}
+                </div> */}
                 <Time
                   label="Abertura:"
-                  placeholder={new Date().toLocaleTimeString("pt-BR", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })}
+                  placeholder={"00:00"}
                   required
-                  onChange={(e) => console.log(e)}
+                  onChange={(e) =>
+                    setFeira({
+                      ...feira,
+                      horario: e,
+                    })
+                  }
+                  value={feira.horario}
                 />
                 <Select
                   label="Cidade:"
                   placeholder="Selecione uma cidade"
-                  items={[
-                    "São Paulo",
-                    "Rio de Janeiro",
-                    "Belo Horizonte",
-                    "Salvador",
-                  ]}
+                  items={["Pelotas"]}
                   required
-                />
-                <Select
-                  label="Estado:"
-                  placeholder="Selecione um Estado"
-                  items={[
-                    "São Paulo",
-                    "Rio de Janeiro",
-                    "Rio Grande do Sul",
-                    "Paraná",
-                  ]}
-                  required
+                  onChange={(e) => setFeira({ ...feira, cidade: e })}
+                  value={feira.cidade}
                 />
               </div>
             </div>
@@ -99,16 +166,25 @@ export default function CadastroPage() {
         <TextField
           label="Descrição:"
           placeholder="Adicione aqui a descrição"
-          onChange={(e) => console.log(e)}
+          onChange={(e) =>
+            setFeira({
+              ...feira,
+              descricao: e,
+            })
+          }
+          value={feira.descricao}
         />
         <div className="flex justify-center gap-10">
-          <button className="text-white bg-green-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform">
+          <button
+            className="text-white bg-green-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform"
+            onClick={() => sendFeira(feira)}
+          >
             <Check size={24} />
             SALVAR
           </button>
-          <button className="text-white bg-red-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform">
+          {/* <button className="text-white bg-red-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform">
             EXCLUIR
-          </button>
+          </button> */}
           <Link
             href="/"
             className="text-black bg-white rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform"
