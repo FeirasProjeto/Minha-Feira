@@ -27,6 +27,4 @@ export async function sendFeira(
       "Content-Type": "application/json",
     },
   });
-
-  console.log(res)
 }

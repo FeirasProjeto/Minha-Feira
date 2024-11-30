@@ -15,24 +15,29 @@ import { DateInput } from "./componentes/DateInput";
 import { Switch } from "@mui/material";
 import { sendFeira } from "../../hooks/Feiras";
 import { TagInput } from "./componentes/TagInput";
+import { useRouter } from "next/navigation";
 
 export default function CadastroPage() {
-  const [weekly, setWeekly] = useState(false);
-  const [feira, setFeira] = useState<addFeira>({
-    nome: "Feira",
-    endereco: "Endereço",
-    numero: "0",
+  const def: addFeira = {
+    nome: "",
+    endereco: "",
+    numero: "",
     cidade: "",
     coordenada: "00", //TODO
     horario: "",
     data: "",
-    descricao: "Descrição",
-    imagem: "https://via.placeholder.com/150",
+    descricao: "",
+    imagem: "",
     userId: "4cafdc53-34a2-4e31-8494-5ae08942ef71", //TODO
-  });
+  };
+
+  const [weekly, setWeekly] = useState(false);
+  const [feira, setFeira] = useState<addFeira>(def);
 
   const [tags, setTags] = useState<Tag[]>([]);
   const [dias, setDias] = useState<diaSemana[]>([]);
+
+  const router = useRouter();
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-r from-[#C4C4C410] to-[#8c8c8c10]">
@@ -169,8 +174,30 @@ export default function CadastroPage() {
         />
         <div className="flex justify-center gap-10">
           <button
-            className="text-white bg-green-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform"
-            onClick={() => sendFeira(feira, tags, dias)}
+            disabled={
+              Object.entries(def).some(
+                ([key, value]) =>
+                  !["coordenada", "userId", "data", "descricao"].includes(
+                    key
+                  ) && feira[key as keyof typeof feira] === value
+              ) ||
+              (feira.data === def.data && dias.length === 0) ||
+              (feira.data !== def.data && dias.length !== 0)
+            }
+            className="text-white bg-green-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform
+            disabled:bg-gray-400
+            disabled:cursor-not-allowed
+            "
+            onClick={() => {
+              sendFeira(feira, tags, dias)
+                .then(() => {
+                  alert("Feira cadastrada com sucesso!");
+                  router.push("/");
+                })
+                .catch(() => {
+                  alert("Erro ao cadastrar feira!");
+                });
+            }}
           >
             <Check size={24} />
             SALVAR
