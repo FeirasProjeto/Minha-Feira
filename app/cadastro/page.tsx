@@ -14,6 +14,7 @@ import { useState } from "react";
 import { DateInput } from "./componentes/DateInput";
 import { Switch } from "@mui/material";
 import { sendFeira } from "../../hooks/Feiras";
+import { TagInput } from "./componentes/TagInput";
 
 export default function CadastroPage() {
   const [weekly, setWeekly] = useState(false);
@@ -22,15 +23,17 @@ export default function CadastroPage() {
     endereco: "Endereço",
     numero: "0",
     cidade: "",
-    coordenada: "", //TODO
+    coordenada: "00", //TODO
     horario: "",
     data: "",
     descricao: "Descrição",
     imagem: "https://via.placeholder.com/150",
-    diaSemana: [],
-    tags: [],
-    userId: "c1a45f50-f8a4-4dc1-b9f3-d3a7e556a813", //TODO
+    userId: "4cafdc53-34a2-4e31-8494-5ae08942ef71", //TODO
   });
+
+  const [tags, setTags] = useState<Tag[]>([]);
+  const [dias, setDias] = useState<diaSemana[]>([]);
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-r from-[#C4C4C410] to-[#8c8c8c10]">
       <Header />
@@ -105,30 +108,19 @@ export default function CadastroPage() {
             {/* <Map /> */}
             <div className="flex gap-4">
               <div className="flex flex-col w-full">
-                {/* <div>
+                <div>
                   <div className="flex justify-between text-2xl">
                     <h1>{weekly ? "Semanal" : "Não semanal"}</h1>
                     <Switch onChange={(e) => setWeekly(e.target.checked)} />
                   </div>
                   {weekly ? (
                     <Weekly
-                      weekdays={feira.diaSemana}
-                      onChange={(e: string, bool: boolean) => {
+                      weekdays={dias}
+                      onChange={(e: Tag, bool: boolean) => {
                         if (bool) {
-                          setFeira({
-                            ...feira,
-                            diaSemana: [
-                              ...feira.diaSemana,
-                              { id: feira.id, dia: e },
-                            ],
-                          });
+                          setDias([...dias, e]);
                         } else {
-                          setFeira({
-                            ...feira,
-                            diaSemana: feira.diaSemana.filter(
-                              (item) => item.dia !== e
-                            ),
-                          });
+                          setDias(dias.filter((d) => d.id !== e.id));
                         }
                       }}
                     />
@@ -138,7 +130,7 @@ export default function CadastroPage() {
                       value={feira.data}
                     />
                   )}
-                </div> */}
+                </div>
                 <Time
                   label="Abertura:"
                   placeholder={"00:00"}
@@ -159,6 +151,7 @@ export default function CadastroPage() {
                   onChange={(e) => setFeira({ ...feira, cidade: e })}
                   value={feira.cidade}
                 />
+                <TagInput onChange={setTags} value={tags} />
               </div>
             </div>
           </div>
@@ -177,7 +170,7 @@ export default function CadastroPage() {
         <div className="flex justify-center gap-10">
           <button
             className="text-white bg-green-600 rounded-xl flex gap-4 justify-evenly py-2 px-5 text-2xl items-center shadow-big hover:cursor-pointer hover:scale-110 transition-transform"
-            onClick={() => sendFeira(feira)}
+            onClick={() => sendFeira(feira, tags, dias)}
           >
             <Check size={24} />
             SALVAR

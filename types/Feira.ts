@@ -8,14 +8,8 @@ type TypeFeira = {
   data: string;
   descricao: string;
   imagem: string;
-  tags: {
-    id: string;
-    nome: string;
-  }[];
-  diaSemana: {
-    id: string;
-    dia: string;
-  }[];
+  tags: Tag[];
+  diaSemana: diaSemana[];
   userId: string;
   nota: number;
 };
