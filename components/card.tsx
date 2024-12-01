@@ -10,10 +10,10 @@ export function Card({ mock }: Props) {
   const [stared, setStared] = React.useState(false);
 
   return (
-    <div className="bg-white rounded-lg p-5 shadow-md w-[420px] h-[340px] flex flex-col justify-between">
+    <div className="bg-white rounded-lg p-5 shadow-md w-[420px] h-[340px] flex flex-col justify-between hover:shadow-big hover:scale-105 transition-all">
       <div className="flex justify-between">
         <div className="flex flex-col">
-          <div className="text-lg font-bold text-secundaria-forte">
+          <div className="text-lg font-bold text-secundaria-forte hover:underline transition-all hover:cursor-pointer">
             {mock.nome}
           </div>
           <div className="flex gap-2">
