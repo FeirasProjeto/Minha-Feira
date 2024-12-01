@@ -10,7 +10,7 @@ interface Props {
 export function Search({ mock, setMockData }: Props) {
   const [input, setInput] = useState("")
   return (
-    <div className="flex w-full sticky top-0 z-50 rounded-2xl mb-5">
+    <div className="flex sticky top-1 z-50 rounded-2xl mb-5 mx-5">
       <Autocomplete
         freeSolo
         sx={{

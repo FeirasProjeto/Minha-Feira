@@ -10,16 +10,16 @@ export function Card({ mock }: Props) {
   const [stared, setStared] = React.useState(false);
 
   return (
-    <div className="bg-white rounded-lg p-5 shadow-md">
+    <div className="bg-white rounded-lg p-5 shadow-md w-[420px] h-[340px] flex flex-col justify-between">
       <div className="flex justify-between">
         <div className="flex flex-col">
           <div className="text-lg font-bold text-secundaria-forte">
             {mock.nome}
           </div>
           <div className="flex gap-2">
-            {mock.tags?.map((tag) => (
-              <div className="bg-secundaria-forte rounded-full  px-2 py-1 ">
-                <div className="text-white">{tag.nome}</div>
+            {mock.tags.map((tag) => (
+              <div className="bg-secundaria-forte rounded-full px-2 py-1 text-sm">
+                <div className="text-white">{tag.tag.nome}</div>
               </div>
             ))}
           </div>
@@ -52,8 +52,16 @@ export function Card({ mock }: Props) {
           />
         </IconButton>
       </div>
-      <div className="mt-5">
-        <img src={mock.imagem} alt="" className="w-full rounded-lg" />
+      <div className="mt-5 overflow-hidden rounded-lg h-[200px] bg-destaque-forte flex items-center justify-center">
+        <img
+          src={mock.imagem}
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "./logo.svg";
+            (e.target as HTMLImageElement).className = "h-12";
+          }}
+        />
       </div>
       <div className="mt-5 flex justify-between font-semibold">
         <div className="flex items-center gap-2">

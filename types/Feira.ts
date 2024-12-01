@@ -8,7 +8,7 @@ type TypeFeira = {
   data: string;
   descricao: string;
   imagem: string;
-  tags: Tag[];
+  tags: [{ tag: Tag }];
   diaSemana: diaSemana[];
   userId: string;
   nota: number;
