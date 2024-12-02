@@ -12,7 +12,7 @@ export default function Header() {
       <Link href={"/"}>
         <img src="./logo.svg" className="h-12" />
       </Link>
-      <div className="w-fit h-full flex">
+      <div className="w-fit h-full pc:flex hidden">
         {items.map((item) => (
           <p
             className={`hover:bg-secundaria-forte/25 
