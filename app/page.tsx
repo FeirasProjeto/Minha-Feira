@@ -41,7 +41,7 @@ export default function HomePage() {
       </div>
 
       {/* Lista de feiras */}
-      <div className="flex flex-wrap justify-evenly gap-5 p-5 container mx-auto">
+      <div className="flex flex-wrap justify-evenly gap-5 p-5 mx-auto">
         {feiras.map((mock) => (
           <Card key={mock.id} feira={mock} openModal={openModal} />
         ))}
