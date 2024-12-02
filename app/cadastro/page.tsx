@@ -50,9 +50,9 @@ export default function CadastroPage() {
         src="./bolinhas/02.svg"
         className="fixed bottom-0 right-0 grayscale z-0"
       />
-      <div className="bg-[#ececec7c] border border-gradient-to-r from-[#C4C4C410] to-[#8c8c8c10] my-auto mx-auto min-w-[500px] rounded-3xl p-10 gap-16 flex flex-col z-10">
+      <div className="bg-[#ececec7c] border border-gradient-to-r from-[#C4C4C410] to-[#8c8c8c10] my-auto mx-auto pc:min-w-1/2 rounded-3xl p-10 gap-16 flex flex-col z-10">
         <Banner />
-        <div className="flex gap-4">
+        <div className="flex pc:flex-row flex-col gap-4">
           <div className="flex flex-col gap-4">
             <Image
               onClick={() => {
