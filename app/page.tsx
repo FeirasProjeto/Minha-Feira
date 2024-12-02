@@ -1,11 +1,12 @@
 "use client";
-import { Drawer } from "@mui/material";
+import { Drawer, Modal } from "@mui/material";
 import { use, useEffect, useState } from "react";
 import Header from "../components/header";
 import { Card } from "../components/card";
 import { Search } from "../components/search";
 import Link from "next/link";
 import { getFeiras } from "../hooks/Feiras";
+import { ModalFeira } from "../components/modal";
 
 export default function HomePage() {
   const [feiras, setFeiras] = useState<TypeFeira[]>([]);
@@ -17,7 +18,14 @@ export default function HomePage() {
     fetchFeiras();
   });
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [selectedFeira, setSelectedFeira] = useState<TypeFeira>(
+    {} as TypeFeira
+  );
+  const openModal = (f: TypeFeira) => {
+    setSelectedFeira(f);
+    setOpen(true);
+  };
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -35,9 +43,16 @@ export default function HomePage() {
       {/* Lista de feiras */}
       <div className="flex flex-wrap justify-evenly gap-5 p-5 container mx-auto">
         {feiras.map((mock) => (
-          <Card key={mock.id} mock={mock} />
+          <Card key={mock.id} feira={mock} openModal={openModal} />
         ))}
       </div>
+
+      <ModalFeira
+        feira={selectedFeira}
+        openModal={openModal}
+        setOpen={setOpen}
+        open={open}
+      />
     </div>
   );
 }

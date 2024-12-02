@@ -116,7 +116,16 @@ export default function CadastroPage() {
                 <div>
                   <div className="flex justify-between text-2xl">
                     <h1>{weekly ? "Semanal" : "Não semanal"}</h1>
-                    <Switch onChange={(e) => setWeekly(e.target.checked)} />
+                    <Switch
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setDias([]);
+                        } else {
+                          setFeira({ ...feira, data: "" });
+                        }
+                        setWeekly(e.target.checked);
+                      }}
+                    />
                   </div>
                   {weekly ? (
                     <Weekly
