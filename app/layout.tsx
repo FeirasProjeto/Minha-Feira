@@ -1,5 +1,6 @@
 import { icons } from "lucide-react";
 import "../styles/globals.css";
+import Footer from "../components/footer";
 
 export const metadata = {
   title: "Minha Feira",
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>{children}</body>
+      <Footer />
     </html>
   );
 }
