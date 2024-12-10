@@ -11,6 +11,8 @@ interface Props {
 export function Search({ mock, setMockData }: Props) {
   const [input, setInput] = useState("");
   const [order, setOrder] = useState(false);
+  const [tags, setTags] = useState<Tag[]>([]);
+  const [selTags, setSelTags] = useState<Tag[]>([]);
 
   function onClickOrder() {
     setOrder((prev) => {
@@ -80,7 +82,12 @@ export function Search({ mock, setMockData }: Props) {
           >
             <SearchIcon className="text-white" />
           </IconButton>
-          <FilterButton setFeiras={setMockData} />
+          <FilterButton
+            setTags={setTags}
+            tags={tags}
+            setSelTags={setSelTags}
+            selTags={selTags}
+          />
           <IconButton
             className="h-fit transition-transform duration-300"
             style={{ transform: order ? "rotate(180deg)" : "rotate(0deg)" }}

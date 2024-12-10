@@ -6,15 +6,20 @@ import React, { useEffect, useState } from "react";
 import { getTags } from "../hooks/Tag";
 
 interface Props {
-  setFeiras: (feiras: TypeFeira[]) => void;
+  setTags: (tags: Tag[]) => void;
+  tags: Tag[];
+  setSelTags: (tags: Tag[]) => void;
+  selTags: Tag[];
 }
 
-export default function FilterButton({ setFeiras }: Props) {
+export default function FilterButton({
+  setTags,
+  tags,
+  setSelTags,
+  selTags,
+}: Props) {
   const [open, setOpen] = useState(false);
   const anchorEl = React.useRef<HTMLButtonElement>(null);
-
-  const [tags, setTags] = useState<Tag[]>([]);
-  const [selTags, setSelTags] = useState<Tag[]>([]);
 
   useEffect(() => {
     async function fetchTags() {
@@ -25,7 +30,6 @@ export default function FilterButton({ setFeiras }: Props) {
   }, []);
 
   async function onSubmit() {
-    console.log(selTags);
     setOpen(false);
   }
 
@@ -42,7 +46,6 @@ export default function FilterButton({ setFeiras }: Props) {
         open={open}
         onClose={() => {
           setOpen(false);
-          setSelTags([]);
         }}
         anchorEl={anchorEl.current}
         anchorOrigin={{
@@ -61,9 +64,9 @@ export default function FilterButton({ setFeiras }: Props) {
                 key={tag.id}
                 onClick={() => {
                   if (selTags.some((t) => t.id === tag.id)) {
-                    setSelTags((prev) => prev.filter((t) => t.id !== tag.id));
+                    setSelTags(selTags.filter((t) => t.id !== tag.id));
                   } else {
-                    setSelTags((prev) => [...prev, tag]);
+                    setSelTags([...selTags, tag]);
                   }
                 }}
                 className={`
@@ -85,7 +88,7 @@ export default function FilterButton({ setFeiras }: Props) {
               onClick={() => onSubmit()}
               className="bg-secundaria-forte text-white px-4 py-2 rounded-full transition-colors hover:bg-secundaria-fraca"
             >
-              Filtrar
+              Fechar
             </button>
           </div>
         </div>
