@@ -11,7 +11,7 @@ export function Card({ feira, openModal }: Props) {
   const [stared, setStared] = React.useState(false);
 
   return (
-    <div className="bg-white rounded-lg p-5 shadow-md w-[420px] h-[340px] flex flex-col justify-between hover:shadow-big hover:scale-105 transition-all">
+    <div className="bg-white rounded-lg p-5 shadow-md w-full h-full flex flex-col justify-between hover:shadow-big hover:scale-105 transition-all smallest:w-[420px] smallest:h-[340px]">
       <div className="flex justify-between">
         <div className="flex flex-col">
           <button
@@ -22,7 +22,10 @@ export function Card({ feira, openModal }: Props) {
           </button>
           <div className="flex gap-2">
             {feira.tags.map((tag) => (
-              <div className="bg-secundaria-forte rounded-full px-2 py-1 text-sm">
+              <div
+                key={tag.tag.id}
+                className="bg-secundaria-forte rounded-full px-2 py-1 text-sm"
+              >
                 <div className="text-white">{tag.tag.nome}</div>
               </div>
             ))}
