@@ -1,5 +1,5 @@
 import { Autocomplete, IconButton, TextField } from "@mui/material";
-import { Filter, SearchIcon, SortAsc } from "lucide-react";
+import { Filter, SearchIcon, SortAsc, SortDesc } from "lucide-react";
 import { useState } from "react";
 import FilterButton from "./filter";
 
@@ -10,6 +10,28 @@ interface Props {
 
 export function Search({ mock, setMockData }: Props) {
   const [input, setInput] = useState("");
+  const [order, setOrder] = useState(false);
+
+  function onClickOrder() {
+    setOrder((prev) => {
+      const sorted = [...mock].sort((a, b) =>
+        prev
+          ? new Date(a.data) < new Date(b.data)
+            ? -1
+            : new Date(a.data) > new Date(b.data)
+            ? 1
+            : 0
+          : new Date(a.data) > new Date(b.data)
+          ? -1
+          : new Date(a.data) < new Date(b.data)
+          ? 1
+          : 0
+      );
+      setMockData(sorted);
+      return !prev;
+    });
+  }
+
   return (
     <div className="flex sticky top-5 z-50 rounded-2xl mb-5 mx-5 mt-5">
       <div className="w-full rounded-xl p-2 flex justify-between">
@@ -59,7 +81,11 @@ export function Search({ mock, setMockData }: Props) {
             <SearchIcon className="text-white" />
           </IconButton>
           <FilterButton setFeiras={setMockData} />
-          <IconButton className="h-fit">
+          <IconButton
+            className="h-fit transition-transform duration-300"
+            style={{ transform: order ? "rotate(180deg)" : "rotate(0deg)" }}
+            onClick={() => onClickOrder()}
+          >
             <SortAsc className="text-white" />
           </IconButton>
         </div>
