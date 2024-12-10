@@ -10,10 +10,12 @@ import { ModalFeira } from "../components/modal";
 
 export default function HomePage() {
   const [feiras, setFeiras] = useState<TypeFeira[]>([]);
+  const [defaultFeiras, setDefault] = useState<TypeFeira[]>([]);
   useEffect(() => {
     const fetchFeiras = async () => {
       const feiras = await getFeiras();
       setFeiras(feiras);
+      setDefault(feiras);
     };
     fetchFeiras();
   }, []);
@@ -29,7 +31,11 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <Search mock={feiras} setMockData={setFeiras} />
+      <Search
+        mock={feiras}
+        setMockData={setFeiras}
+        defaultFeiras={defaultFeiras}
+      />
 
       {/* Botão fixo para cadastro */}
       <div className="fixed bottom-4 right-4 z-50">

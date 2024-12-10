@@ -6,9 +6,10 @@ import FilterButton from "./filter";
 interface Props {
   mock: TypeFeira[];
   setMockData: (mock: TypeFeira[]) => void;
+  defaultFeiras: TypeFeira[];
 }
 
-export function Search({ mock, setMockData }: Props) {
+export function Search({ mock, setMockData, defaultFeiras }: Props) {
   const [input, setInput] = useState("");
   const [order, setOrder] = useState(false);
   const [tags, setTags] = useState<Tag[]>([]);
@@ -32,6 +33,19 @@ export function Search({ mock, setMockData }: Props) {
       setMockData(sorted);
       return !prev;
     });
+  }
+
+  function onSendFilter(e: Tag[]) {
+    setSelTags(e);
+    if (e.length == 0) {
+      setMockData(defaultFeiras);
+    } else {
+      setMockData(
+        defaultFeiras.filter((option) => {
+          return option.tags.some((tag) => e.some((t) => t.id === tag.tag.id));
+        })
+      );
+    }
   }
 
   return (
@@ -71,6 +85,10 @@ export function Search({ mock, setMockData }: Props) {
         <div className="flex h-full rounded-r-2xl items-center bg-secundaria-fraca">
           <IconButton
             onClick={(e) => {
+              if (input.length == 0) {
+                setMockData(defaultFeiras);
+                return
+              }
               setMockData(
                 mock.filter((option) =>
                   option.nome.toLowerCase().includes(input.toLowerCase())
@@ -85,7 +103,7 @@ export function Search({ mock, setMockData }: Props) {
           <FilterButton
             setTags={setTags}
             tags={tags}
-            setSelTags={setSelTags}
+            setSelTags={onSendFilter}
             selTags={selTags}
           />
           <IconButton
