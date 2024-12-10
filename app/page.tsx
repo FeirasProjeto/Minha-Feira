@@ -16,7 +16,7 @@ export default function HomePage() {
       setFeiras(feiras);
     };
     fetchFeiras();
-  });
+  }, []);
 
   const [open, setOpen] = useState(false);
   const [selectedFeira, setSelectedFeira] = useState<TypeFeira>(

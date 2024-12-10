@@ -1,6 +1,7 @@
 import { Autocomplete, IconButton, TextField } from "@mui/material";
 import { Filter, SearchIcon, SortAsc } from "lucide-react";
 import { useState } from "react";
+import FilterButton from "./filter";
 
 interface Props {
   mock: TypeFeira[];
@@ -8,66 +9,61 @@ interface Props {
 }
 
 export function Search({ mock, setMockData }: Props) {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
   return (
     <div className="flex sticky top-5 z-50 rounded-2xl mb-5 mx-5 mt-5">
-      <Autocomplete
-        freeSolo
-        sx={{
-          width: "100%",
-          ".MuiInputBase-root": {
-            backgroundColor: "rgba(255, 255, 255)",
-            borderRadius: "12px",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-          },
-        }}
-        options={mock.map((option) => option.nome)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            sx={{
-              ".MuiInputBase-root": {
-                borderRadius: "12px",
-              },
+      <div className="w-full rounded-xl p-2 flex justify-between">
+        <Autocomplete
+          freeSolo
+          sx={{
+            width: "100%",
+            ".MuiInputBase-root": {
+              backgroundColor: "transparent",
+              boxShadow: "none",
+            },
+          }}
+          options={mock.map((option) => option.nome)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Pesquisar"
+              className="w-full"
+              sx={{
+                backgroundColor: "white",
+              }}
+              slotProps={{
+                input: {
+                  ...params.InputProps,
+                  type: "search",
+                },
+              }}
+              onFocus={(e) => e.stopPropagation()}
+            />
+          )}
+          onInputChange={(event, newInputValue) => {
+            setInput(newInputValue);
+          }}
+        />
+        <div className="flex h-full rounded-r-2xl items-center bg-secundaria-fraca">
+          <IconButton
+            onClick={(e) => {
+              setMockData(
+                mock.filter((option) =>
+                  option.nome.toLowerCase().includes(input.toLowerCase())
+                )
+              );
+              e.stopPropagation();
             }}
-            label="Pesquisar"
-            className="w-full rounded-xl"
-            slotProps={{
-              input: {
-                ...params.InputProps,
-                type: "search",
-                endAdornment: (
-                  <div className="flex w-fit absolute right-0 top-0 h-full bg-secundaria-fraca items-center rounded-r-xl overflow-hidden">
-                    <IconButton
-                      onClick={() => {
-                        setMockData(
-                          mock.filter((option) =>
-                            option.nome
-                              .toLowerCase()
-                              .includes(input.toLowerCase())
-                          )
-                        );
-                      }}
-                      className="h-fit"
-                    >
-                      <SearchIcon className="text-white" />
-                    </IconButton>
-                    <IconButton className="h-fit">
-                      <Filter className="text-white" />
-                    </IconButton>
-                    <IconButton className="h-fit">
-                      <SortAsc className="text-white" />
-                    </IconButton>
-                  </div>
-                ),
-              },
-            }}
-          />
-        )}
-        onInputChange={(event, newInputValue) => {
-          setInput(newInputValue);
-        }}
-      />
+            className="h-fit"
+          >
+            <SearchIcon className="text-white" />
+          </IconButton>
+          <FilterButton setFeiras={setMockData} />
+          <IconButton className="h-fit">
+            <SortAsc className="text-white" />
+          </IconButton>
+        </div>
+      </div>
     </div>
   );
 }
