@@ -32,7 +32,7 @@ export default function HomePage() {
       <Search mock={feiras} setMockData={setFeiras} />
 
       {/* Botão fixo para cadastro */}
-      <div className="fixed bottom-4 right-4">
+      <div className="fixed bottom-4 right-4 z-50">
         <Link href="/cadastro">
           <button className="p-4 bg-secundaria-forte text-white rounded-full shadow-lg hover:bg-secundaria-clara">
             Cadastrar feira
