@@ -93,9 +93,7 @@ export function Card({ feira, openModal }: Props) {
           <Clock className="text-secundaria-forte" />
           <div className="text-sm text-secundaria-forte">
             Ás{" "}
-            {new Date(feira.data).getHours().toString().padStart(2, "0") +
-              ":" +
-              new Date(feira.data).getMinutes().toString().padStart(2, "0")}
+            {feira.horario}
           </div>
         </div>
       </div>
