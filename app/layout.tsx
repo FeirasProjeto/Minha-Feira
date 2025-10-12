@@ -4,7 +4,7 @@ import Footer from "../components/footer";
 
 export const metadata = {
   title: "Minha Feira",
-  description: "Website da Minha Feira.",
+  description: "Aplicativo Minha Feira.",
   icons: {
     icon: "/logo.png",
   },

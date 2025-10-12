@@ -6,6 +6,7 @@ import Header from "../components/header";
 import Banner from "../components/banner";
 import Features from "../components/features";
 import Faq from "../components/faq";
+import Final from "../components/final";
 
 
 export default function HomePage() {
@@ -34,6 +35,7 @@ export default function HomePage() {
       <Banner />
       <Features />
       <Faq />
+      <Final />
     </div>
   );
 }
