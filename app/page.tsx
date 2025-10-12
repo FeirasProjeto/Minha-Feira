@@ -2,8 +2,6 @@
 import { Drawer, Modal } from "@mui/material";
 import { use, useEffect, useState } from "react";
 import Header from "../components/header";
-import { Card } from "../components/card";
-import { Search } from "../components/search";
 import Link from "next/link";
 import { getFeiras } from "../hooks/Feiras";
 import { ModalFeira } from "../components/modal";
@@ -31,11 +29,6 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <Search
-        mock={feiras}
-        setMockData={setFeiras}
-        defaultFeiras={defaultFeiras}
-      />
 
       {/* Botão fixo para cadastro */}
       <div className="fixed bottom-4 right-4 z-50">
@@ -44,13 +37,6 @@ export default function HomePage() {
             Cadastrar feira
           </button>
         </Link>
-      </div>
-
-      {/* Lista de feiras */}
-      <div className="flex flex-wrap justify-evenly gap-5 p-5 mx-auto">
-        {feiras.map((mock) => (
-          <Card key={mock.id} feira={mock} openModal={openModal} />
-        ))}
       </div>
 
       <ModalFeira

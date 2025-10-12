@@ -6,7 +6,7 @@ export const metadata = {
   title: "Minha Feira",
   description: "Website da Minha Feira.",
   icons: {
-    icon: "/logo.svg",
+    icon: "/logo.png",
   },
 };
 

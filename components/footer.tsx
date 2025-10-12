@@ -1,58 +1,79 @@
+import { Facebook, Linkedin, Twitter, Instagram, Globe } from "lucide-react";
 import { Divider } from "@mui/material";
-import { Facebook, Instagram, Linkedin, LucideInstagram } from "lucide-react";
-import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="w-full p-5 bg-white text-black text-lg flex flex-col gap-12">
-      <Divider />
-      <div className="flex flex-col gap-3 items-center pc:flex-row pc:justify-evenly pc:w-full">
-        <img src="./logo v2.svg" className="w-32" alt="logo" />
-        <a href="mailto:feirass.projeto@gmail.com" className="text-base hover:underline">
-          feirass.projeto@gmail.com
-        </a>
-        <div className="flex gap-3 flex-col w-full pc:w-fit">
-          <h1>Links Rápidos</h1>
-          <div className="flex flex-wrap text-black/50">
-            <Link href={"/"} className="w-1/2">
-              Home
-            </Link>
-            <a
-              href="https://github.com/FeirasProjeto/Minha-Feira"
-              className="w-1/2 text-right"
-            >
-              Github
-            </a>
-            <Link href={"/"} className="w-1/2">
-              Mapa
-            </Link>
-            <p className="w-1/2 text-right hover:cursor-not-allowed">
-              Instagram
+    <footer className="w-full bg-gray-200 text-gray-800 text-sm">
+      <div className="max-w-7xl mx-auto py-10 px-6 grid grid-cols-5 gap-10">
+
+        <div className="flex flex-col justify-between">
+          <div>
+            <h2 className="font-bold text-gray-900 text-base mb-2">LOGO</h2>
+            <p className="text-gray-700 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Aenean commodo ligula eget dolor. Aenean massa.
             </p>
           </div>
+          <p className="text-xs text-gray-600 mt-6">
+            copyright 2024 <b>MinhaFeira</b> All Rights Reserved
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold text-gray-700 mb-1">About us</h3>
+          <a href="#" className="hover:underline">Investors</a>
+          <a href="#" className="hover:underline">Features</a>
+          <a href="#" className="hover:underline">Book a demo</a>
+          <a href="#" className="hover:underline">Security</a>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold text-gray-700 mb-1">Useful Links</h3>
+          <a href="#" className="hover:underline">Free rewards</a>
+          <a href="#" className="hover:underline">Documentation</a>
+          <a href="#" className="hover:underline">Affiliate program</a>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h3 className="font-semibold text-gray-700 mb-1">Social</h3>
+          <a href="#" className="hover:underline">Changelog</a>
+          <a href="#" className="hover:underline">License</a>
+          <a href="#" className="hover:underline">Site Maps</a>
+          <a href="#" className="hover:underline">News</a>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="flex gap-3">
+            <button className="bg-black rounded-full p-2 text-white hover:opacity-80">
+              <Facebook size={18} />
+            </button>
+            <button className="bg-black rounded-full p-2 text-white hover:opacity-80">
+              <Linkedin size={18} />
+            </button>
+            <button className="bg-black rounded-full p-2 text-white hover:opacity-80">
+              <Twitter size={18} />
+            </button>
+            <button className="bg-black rounded-full p-2 text-white hover:opacity-80">
+              <Instagram size={18} />
+            </button>
+          </div>
+
+          {/* Seleção de idioma */}
+          <div className="flex items-center justify-between border border-gray-400 rounded-xl px-3 py-1 mt-1 shadow-sm w-fit">
+            <div className="flex items-center gap-2 text-gray-600">
+              <Globe size={16} />
+              <span>Português - BR</span>
+            </div>
+            <span className="ml-2 text-gray-500">▼</span>
+          </div>
+
+          <p className="text-xs text-gray-600 mt-4">
+            This page uses cookies. See cookies details here
+          </p>
         </div>
       </div>
-      <Divider />
-      <div className="flex flex-col gap-3 items-center pc:flex-row pc:justify-evenly">
-        <div className="flex gap-2">
-          <button className="rounded-full p-2 hover:bg-black/10 hover:scale-110 transition-all border-4 border-inherit hover:cursor-not-allowed">
-            <LucideInstagram size={40} className=" p-2" />
-          </button>
-          <button className="rounded-full p-2 hover:bg-black/10 hover:scale-110 transition-all border-4 border-inherit hover:cursor-not-allowed">
-            <Linkedin size={40} className="p-2" />
-          </button>
-          <button className="rounded-full p-2 hover:bg-black/10 hover:scale-110 transition-all border-4 border-inherit hover:cursor-not-allowed">
-            <Facebook size={40} className="p-2" />
-          </button>
-        </div>
-        <div className="flex gap-2">
-          <p>Um produto de</p>
-          <img src="./logo v2.svg" className="w-12" alt="logo" />
-        </div>
-        <p>
-          © 2024 <b>Minha Feira</b>. All rights reserved
-        </p>
-      </div>
-    </div>
+
+      <Divider className="border-gray-400" />
+    </footer>
   );
 }
