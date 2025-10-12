@@ -17,8 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
-      <Footer />
+      <body className="bg-landing bg-cover bg-center min-h-screen">
+        {children}
+      </body>
     </html>
   );
 }
