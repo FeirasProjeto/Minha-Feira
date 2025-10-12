@@ -1,10 +1,12 @@
 "use client";
-import { Drawer, Modal } from "@mui/material";
-import { use, useEffect, useState } from "react";
-import Header from "../components/header";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { getFeiras } from "../hooks/Feiras";
-import { ModalFeira } from "../components/modal";
+
+import Header from "../components/header";
+import Banner from "../components/banner";
+import Features from "../components/features";
+import Faq from "../components/faq";
+
 
 export default function HomePage() {
   const [feiras, setFeiras] = useState<TypeFeira[]>([]);
@@ -29,22 +31,9 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-
-      {/* Botão fixo para cadastro */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <Link href="/cadastro">
-          <button className="p-4 bg-secundaria-forte text-white rounded-full shadow-lg hover:bg-secundaria-clara">
-            Cadastrar feira
-          </button>
-        </Link>
-      </div>
-
-      <ModalFeira
-        feira={selectedFeira}
-        openModal={openModal}
-        setOpen={setOpen}
-        open={open}
-      />
+      <Banner />
+      <Features />
+      <Faq />
     </div>
   );
 }

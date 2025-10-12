@@ -6,7 +6,6 @@ export default function Header() {
   return (
     <header className="w-full bg-white shadow-sm h-20 flex items-center">
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-6">
-        {/* LOGO */}
         <Link href="/" className="flex items-center">
           <img
             src="/logo.png"
