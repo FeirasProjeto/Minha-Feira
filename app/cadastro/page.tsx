@@ -1,21 +1,22 @@
 "use client";
 
-import Header from "../../components/header";
+import Header from "@/components/header";
 import { Image } from "./componentes/Image";
-import { Banner } from "../../components/banner";
 import { Input } from "./componentes/Input";
 import { Select } from "./componentes/Select";
 import { Weekly } from "./componentes/Weekly";
 import { TextField } from "./componentes/TextField";
 import { Time } from "./componentes/Time";
 import { Check } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import { DateInput } from "./componentes/DateInput";
 import { Switch } from "@mui/material";
-import { sendFeira } from "../../hooks/Feiras";
+import { sendFeira } from "@/hooks/Feiras";
 import { TagInput } from "./componentes/TagInput";
 import { useRouter } from "next/navigation";
+
+import Link from "next/link";
+import Banner from "@/components/banner";
 
 export default function CadastroPage() {
   const def: addFeira = {

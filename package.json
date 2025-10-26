@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "build": "next build",
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
