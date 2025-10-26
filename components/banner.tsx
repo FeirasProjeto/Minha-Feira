@@ -44,7 +44,7 @@ export default function Banner() {
         {/* Coluna Direita - Mockup isométrico*/}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/placeholder.jpg"
+            src="/MockupLanding.png"
             alt="App Preview"
             width={500}
             height={400}

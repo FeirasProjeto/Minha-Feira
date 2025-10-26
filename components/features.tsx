@@ -17,7 +17,7 @@ export default function Features() {
         {/* Imagem */}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/placeholder2.png"
+            src="/MockupLanding2.png"
             alt="App Preview"
             width={500}
             height={400}
@@ -61,7 +61,7 @@ export default function Features() {
         {/* Imagem */}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/placeholder3.png"
+            src="/MockupLanding1.png"
             alt="App Preview 2"
             width={500}
             height={400}

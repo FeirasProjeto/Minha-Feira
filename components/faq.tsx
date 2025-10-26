@@ -48,7 +48,7 @@ export default function Faq() {
 
           <div className="flex justify-left md:justify-start">
             <Image
-              src="/placeholder5.png"
+              src="/FAQmockup.png"
               alt="FAQ Illustration"
               width={300}
               height={300}

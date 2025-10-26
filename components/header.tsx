@@ -8,7 +8,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-6">
         <Link href="/" className="flex items-center">
           <img
-            src="/logo.png"
+            src="/Logo.png"
             alt="Logo Minha Feira"
             className="h-10 w-auto"
           />
