@@ -20,6 +20,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="bg-landing bg-cover bg-center min-h-screen">
         {children}
+        <Analytics />
       </body>
     </html>
   );
