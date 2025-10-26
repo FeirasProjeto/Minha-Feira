@@ -30,7 +30,7 @@ export default function Final() {
         <div className="flex-1 flex justify-end items-center max-w-xl">
           <div className="relative w-[360px] md:w-[420px]">
             <Image
-              src="/placeholder6.png"
+              src="/FinalMockup.png"
               alt="App Preview"
               width={420}
               height={800}

@@ -86,7 +86,7 @@ export default function Features() {
         {/* Imagem 4*/}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/placeholder4.png"
+            src="/Mockup3.png"
             alt="App Preview 2"
             width={500}
             height={400}
