@@ -1,6 +1,7 @@
 import { icons } from "lucide-react";
 import "../styles/globals.css";
 import Footer from "../components/footer";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   title: "Minha Feira",
