@@ -3,22 +3,22 @@ import Image from "next/image";
 export default function Cards_Features() {
   const features = [
     {
-      icon: "/Logo.png",
+      icon: "/map.png",
       title: "Descubra",
       desc: "Encontre feiras perto de você de forma rápida e prática.",
-      bg: "bg-gray-800",
+      bg: "bg-red-600",
     },
     {
-      icon: "/Logo.png",
+      icon: "/calendar.png",
       title: "Planeje",
       desc: "Veja horários de funcionamento e localização exata da feira antes de sair de casa.",
-      bg: "bg-gray-800",
+      bg: "bg-red-600",
     },
     {
-      icon: "/Logo.png",
+      icon: "/favorito.png",
       title: "Salve",
       desc: "Guarde suas feiras favoritas para acessá-las rapidamente quando quiser.",
-      bg: "bg-gray-800",
+      bg: "bg-red-600",
     },
   ];
 
