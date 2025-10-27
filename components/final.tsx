@@ -7,13 +7,11 @@ export default function Final() {
         {/* === Coluna Esquerda === */}
         <div className="flex flex-col justify-start text-left flex-1 -mt-32">
           <h2 className="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Easy Way to discover{" "}
-            <span className="text-green-500">feiras</span>
+            Não perca nenhuma feira perto de você
           </h2>
 
           <p className="text-gray-600 mb-8 max-w-md">
-            Easy to use mobile app that supports Android and iOS.
-          </p>
+Baixe o Minha Feira e descubra, avalie e acompanhe feiras de todos os tipos, de tudo na palma da sua mão          </p>
 
           <div className="flex justify-start">
             <Image
