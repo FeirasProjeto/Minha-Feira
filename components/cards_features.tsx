@@ -4,20 +4,20 @@ export default function Cards_Features() {
   const features = [
     {
       icon: "/Logo.png",
-      title: "Lorem Ipsum",
-      desc: "Fusce dictum lobortis est a sollicitudin.",
+      title: "Descubra",
+      desc: "Encontre feiras perto de você de forma rápida e prática.",
       bg: "bg-gray-800",
     },
     {
       icon: "/Logo.png",
-      title: "Lorem Ipsum",
-      desc: "Fusce dictum lobortis est a sollicitudin.",
+      title: "Planeje",
+      desc: "Veja horários de funcionamento e localização exata da feira antes de sair de casa.",
       bg: "bg-gray-800",
     },
     {
       icon: "/Logo.png",
-      title: "Lorem Ipsum",
-      desc: "Fusce dictum lobortis est a sollicitudin.",
+      title: "Salve",
+      desc: "Guarde suas feiras favoritas para acessá-las rapidamente quando quiser.",
       bg: "bg-gray-800",
     },
   ];

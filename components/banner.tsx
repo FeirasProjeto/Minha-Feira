@@ -9,9 +9,9 @@ export default function Banner() {
         {/* Coluna Esquerda - Call to action */}
         <div className="flex-1 text-left relative">
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight relative">
-            Lorem ipsum dolor sit{" "}
+            Facilite suas compras, baixe o aplicativo{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-gray-900">amet elit.</span>
+              <span className="relative z-10 text-red-600">MinhaFeira</span>
 
               <Image
                 src="/circulo.svg" 
@@ -24,8 +24,9 @@ export default function Banner() {
           </h1>
 
           <p className="text-gray-600 mt-6 text-base max-w-md">
-            Discover the power of our secure and rewarding credit cards.
-            Explore our range of credit cards and take control of your finances today.
+            Se conecte com feirantes e produtores locais de Pelotas. 
+  Descubra feiras próximas, conheça os produtos disponíveis e viva uma experiência 
+  mais prática e sustentável ao fazer suas compras.
           </p>
 
           <div className="mt-8">
