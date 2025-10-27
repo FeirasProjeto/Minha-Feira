@@ -28,15 +28,13 @@ export default function Features() {
         {/* Texto */}
         <div className="flex-1 text-left relative">
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight relative">
-            Lorem ipsum dolor sit{" "}
+            Encontre feiras próximas em {" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-gray-900">amet elit.</span>
+              <span className="relative z-10 text-red-700">segundos</span>
             </span>
           </h1>
 
-          <p className="text-gray-600 mt-6 text-base max-w-md">
-            Discover the power of our secure and rewarding credit cards.
-            Explore our range of credit cards and take control of your finances today.
+          <p className="text-gray-600 mt-6 text-base max-w-md"> Nossa integração com o Google Maps permite que você descubra rapidamente os eventos próximos, visualize rotas e planeje o melhor caminho até eles.
           </p>
         </div>
       </div>
@@ -47,16 +45,14 @@ export default function Features() {
         {/* Texto */}
         <div className="flex-1 text-left relative">
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight relative">
-            Lorem ipsum dolor sit{" "}
+            Seu evento perfeito, em{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-gray-900">amet elit.</span>
+              <span className="relative z-10 text-purple-600"> um clique</span>
             </span>
           </h1>
 
           <p className="text-gray-600 mt-6 text-base max-w-md">
-            Discover the power of our secure and rewarding credit cards.
-            Explore our range of credit cards and take control of your finances today.
-          </p>
+Descubra feiras que combinam com seu estilo: hortifruti, cultural, artesanal, tecnológica e muito mais. Aplique filtros personalizados e ache exatamente o que deseja.        </p>
         </div>
         {/* Imagem */}
         <div className="flex-1 flex justify-center">
@@ -75,12 +71,11 @@ export default function Features() {
         {/* Texto */}
         <div className="flex-1 text-center relative">
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight relative">
-            Lorem ipsum dolor sit.
+            Tudo o que você precisa em um só aplicativo.
           </h1>
 
           <p className="text-gray-600 mt-6 mb-10 text-base max-w-md mx-auto">
-            Discover the power of our secure and rewarding credit cards.
-            Explore our range of credit cards and take control of your finances today.
+Receba notificações em tempo real sobre feiras próximas, descubra detalhes, comentários e avaliações de cada evento. Explore categorias, planeje rotas e nunca perca uma feira que combina com você. Tudo em um único app, rápido e fácil de usar.
           </p>
         </div>
         {/* Imagem 4*/}

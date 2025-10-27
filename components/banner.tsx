@@ -11,7 +11,7 @@ export default function Banner() {
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight relative">
             Facilite suas compras, baixe o aplicativo{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-red-600">MinhaFeira</span>
+              <span className="relative z-10 text-gray-900">MinhaFeira</span>
 
               <Image
                 src="/circulo.svg" 
