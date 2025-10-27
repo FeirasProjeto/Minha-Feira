@@ -7,29 +7,34 @@ export default function Faq() {
 
   const faqs = [
     {
-      question: "Pellentesque ac bibendum tortor?",
+      question: "O que é o Minha Feira?",
       answer:
-        "Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor.",
+        "O Minha Feira é um aplicativo para celular que ajuda você a encontrar feiras na cidade de Pelotas, no Rio Grande do Sul/Braisl. Nele, você pode ver onde as feiras estão, quais produtos elas vendem e até salvar suas favoritas para visitar depois.",
     },
     {
-      question: "In mi nulla, fringilla vestibulum?",
+      question: "Como eu encontro uma feira perto de mim?",
       answer:
-        "Curabitur vel lorem id libero maximus tincidunt sit amet non odio.",
+        "Ao abrir o aplicativo, toque na aba do mapa. O app mostra todas as feiras próximas à sua localização. Você pode clicar em cada feira para ver endereço, horários e produtos. É preciso permitir que o app acesse sua localização para isso, nas configurações do seu celular.",
     },
     {
-      question: "In mi nulla, fringilla vestibulum?",
+      question: "Preciso saber usar tecnologia para usar o aplicativo?",
       answer:
-        "Curabitur vel lorem id libero maximus tincidunt sit amet non odio.",
+        "Não! O Minha Feira foi feito para ser fácil de usar. Tudo é clicável ou tocável, com instruções claras. Se conseguir tocar na tela do celular, já consegue usar o aplicativo.",
     },
     {
-      question: "In mi nulla, fringilla vestibulum?",
+      question: "Como salvar minhas feiras favoritas?",
       answer:
-        "Curabitur vel lorem id libero maximus tincidunt sit amet non odio.",
+        "Quando encontrar uma feira que goste, toque no ícone de coração ❤️ para favorita-la. Depois, você pode ver todas as suas feiras favoritas na aba 'Favoritas' do aplicativo.",
     },
     {
-      question: "In mi nulla, fringilla vestibulum?",
+      question: "E se eu esquecer a senha ou tiver problemas para entrar?",
       answer:
-        "Curabitur vel lorem id libero maximus tincidunt sit amet non odio.",
+        "Não se preocupe! Na tela de login, existe a opção “Esqueci minha senha”. Toque nela e siga as instruções para criar uma nova senha usando seu e-mail.",
+    },
+        {
+      question: "Preciso pagar para usar o app?",
+      answer:
+        "Não. O uso do aplicativo é gratuito.",
     },
   ];
 
@@ -43,7 +48,7 @@ export default function Faq() {
           <div className="w-16 h-2 bg-green-200 rounded-full mx-left md:mx-0 mb-6"></div>
 
           <p className="text-gray-600 max-w-sm mb-10 mx-left md:mx-0">
-            Vestibulum sit amet tortor sit amet libero lobortis semper at et odio.
+  Aqui respondemos as perguntas mais comuns sobre como usar o Minha Feira. Se tiver mais dúvidas, entre em contato conosco! 
           </p>
 
           <div className="flex justify-left md:justify-start">

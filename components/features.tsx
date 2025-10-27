@@ -30,7 +30,7 @@ export default function Features() {
           <h1 className="text-5xl font-extrabold text-gray-900 leading-tight relative">
             Encontre feiras próximas em {" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-red-700">segundos</span>
+              <span className="relative z-10 text-red-600">segundos</span>
             </span>
           </h1>
 
