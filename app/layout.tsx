@@ -19,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="bg-landing bg-cover bg-center min-h-screen">
-        {children}
-        <Analytics />
+        {/* Container principal responsivo */}
+        <div className="min-h-screen flex flex-col">
+          {children}
+          <Analytics />
+        </div>
       </body>
     </html>
   );

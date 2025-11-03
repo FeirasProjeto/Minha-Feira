@@ -33,15 +33,17 @@ export default function HomePage() {
   };
 
   return (
-    <div
-      className="flex flex-col min-h-screen bg-[url('/bg-pattern.jpg')] bg-cover bg-center bg-fixed"
-    >
-      <Header />
-      <Banner />
-      <Features />
-      <Faq />
-      <Final />
-      <Footer />
-    </div>
+    <main className="flex-1">
+      <div className="flex flex-col min-h-screen bg-[url('/bg-pattern.jpg')] bg-cover bg-center bg-fixed">
+        <Header />
+        <div className="flex-1">
+          <Banner />
+          <Features />
+          <Faq />
+          <Final />
+        </div>
+        <Footer />
+      </div>
+    </main>
   );
 }
