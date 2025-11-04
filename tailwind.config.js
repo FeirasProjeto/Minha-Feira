@@ -5,11 +5,15 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
+  darkMode: "class", 
+
   theme: {
     extend: {
       backgroundImage: {
-      'landing': "url('/bg-pattern.jpg')",
-        },
+        landing: "url('/bg-pattern.jpg')",
+      },
+
       colors: {
         dominante: {
           forte: "#EDECE5",
@@ -24,14 +28,38 @@ module.exports = {
           fraca: "#F4C042",
         },
       },
+
+      // Sombras
       boxShadow: {
         big: "0px 4px 4px rgba(0, 0, 0, 0.25)",
       },
+
+      // Container centralizado automático
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+        },
+      },
+
+      // Tipografia fluida 
+      fontSize: {
+        "fluid-lg": "clamp(1.25rem, 2vw + 0.5rem, 2rem)",
+        "fluid-xl": "clamp(1.5rem, 2.5vw + 0.5rem, 2.5rem)",
+      },
     },
+
     screens: {
-      pc: "600px",
-      smallest: "450px",
+      smallest: "320px",
+      pc: "1024px",
+      ...require("tailwindcss/defaultTheme").screens,
     },
   },
-  plugins: [],
+
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+  ],
 };

@@ -34,16 +34,17 @@ export default function HomePage() {
 
   return (
     <main className="flex-1">
-      <div className="flex flex-col min-h-screen bg-[url('/bg-pattern.jpg')] bg-cover bg-center bg-fixed">
-        <Header />
-        <div className="flex-1">
-          <Banner />
-          <Features />
-          <Faq />
-          <Final />
-        </div>
-        <Footer />
-      </div>
+      {/* Conteúdo da página, sem repetir o fundo */}
+      <Header />
+
+      <section className="flex flex-col gap-16">
+        <Banner />
+        <Features />
+        <Faq />
+        <Final />
+      </section>
+
+      <Footer />
     </main>
   );
 }
