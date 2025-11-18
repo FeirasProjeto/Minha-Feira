@@ -54,7 +54,8 @@ module.exports = {
     screens: {
       smallest: "320px",
       pc: "1024px",
-      ...require("tailwindcss/defaultTheme").screens,
+      lg: "1280px",
+      xl: "1440px",
     },
   },
 

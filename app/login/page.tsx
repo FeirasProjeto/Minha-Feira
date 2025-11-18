@@ -8,7 +8,6 @@ import { Eye, EyeClosed, Shield, Monitor, Lock, Activity } from "lucide-react";
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [adminKey, setAdminKey] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -25,10 +24,9 @@ export default function AdminLoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
-          email, 
-          password, 
-          adminKey 
+        body: JSON.stringify({
+          email,
+          password,
         }),
       });
 
@@ -40,7 +38,6 @@ export default function AdminLoginPage() {
       }
 
       router.push("/admin/dashboard");
-      
     } catch (err: any) {
       setError(err.message || "Erro de conexão");
     } finally {
@@ -64,7 +61,6 @@ export default function AdminLoginPage() {
       <div className="fixed bottom-24 right-16 text-[#DF2A35]/10">
         <Activity size={44} />
       </div>
-
 
       {/* Main Content */}
       <div className="relative z-10 flex-1 flex items-center justify-center p-6">
@@ -175,48 +171,6 @@ export default function AdminLoginPage() {
                   {showPassword ? <Eye size={20} /> : <EyeClosed size={20} />}
                 </IconButton>
               </div>
-            </div>
-
-            {/* Chave de Segurança */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                <Shield size={16} className="text-[#1AA96E]" />
-                Chave de Segurança
-              </label>
-              <TextField
-                type="password"
-                value={adminKey}
-                onChange={(e) => setAdminKey(e.target.value)}
-                placeholder="Digite a chave de segurança"
-                required
-                fullWidth
-                variant="outlined"
-                sx={{
-                  "& fieldset": {
-                    borderRadius: "8px",
-                    borderColor: "rgba(255,255,255,0.1)",
-                    borderWidth: "2px",
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(255,255,255,0.05)",
-                    "&:hover fieldset": {
-                      borderColor: "rgba(255,255,255,0.2)",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#8031C5",
-                    },
-                    "&.Mui-error fieldset": {
-                      borderColor: "#DF2A35",
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.4)",
-                    },
-                  },
-                }}
-              />
             </div>
 
             {/* Botão de Login */}
