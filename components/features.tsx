@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Features() {
   return (
-    <section className="w-full bg-gradient-to-br from-white to-gray-50 py-10 space-y-20">
+    <section id="servicos" className="w-full bg-gradient-to-br from-white to-gray-50 py-10 space-y-20">
 
       <div className="text-center">
         <h2 className="text-4xl font-bold text-gray-900">

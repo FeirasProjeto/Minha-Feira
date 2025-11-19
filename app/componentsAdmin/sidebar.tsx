@@ -10,11 +10,11 @@ const links = [
   { href: "/admin/config", label: "Configurações", icon: Settings },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({closeSidebar}) {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-gray-800 border-r border-gray-700 p-4">
+    <aside className="w-64 h-full bg-gray-800 border-r border-gray-700 p-4">
       <h2 className="text-xl font-bold mb-6">Admin</h2>
 
       <nav className="space-y-2">
@@ -26,6 +26,7 @@ export default function Sidebar() {
               ${pathname.startsWith(href)
                 ? "bg-gray-700 text-green-400" 
                 : "text-gray-300 hover:bg-gray-700"}`}
+            onClick={closeSidebar}
           >
             <Icon size={18} />
             {label}

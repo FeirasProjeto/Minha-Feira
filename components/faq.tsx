@@ -39,7 +39,7 @@ export default function Faq() {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-br from-white to-gray-50 py-20">
+    <section id="faq" className="w-full bg-gradient-to-br from-white to-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-row items-start justify-between gap-16">
         
         {/* Coluna Esquerda - Título + Texto + Imagem */}

@@ -34,10 +34,9 @@ export default function HomePage() {
 
   return (
     <main className="flex-1">
-      {/* Conteúdo da página, sem repetir o fundo */}
       <Header />
 
-      <section className="flex flex-col gap-16">
+      <section className="flex flex-col gap-8">
         <Banner />
         <Features />
         <Faq />

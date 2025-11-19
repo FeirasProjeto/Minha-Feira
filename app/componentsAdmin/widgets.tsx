@@ -16,7 +16,7 @@ export default function Widget({
       hover:shadow-lg
       flex flex-col
       gap-1
-      sm:p-5          // telas maiores -> mais padding
+      sm:p-5          
     ">
       <p className="text-gray-400 text-sm sm:text-base">{title}</p>
       <h3 className="text-3xl font-bold break-words">{value}</h3>

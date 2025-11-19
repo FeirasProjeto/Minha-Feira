@@ -19,7 +19,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* BOTÃO HAMBÚRGUER */}
         <button
           className="lg:hidden text-gray-900"
           onClick={() => setIsOpen(!isOpen)}
@@ -33,7 +32,7 @@ export default function Header() {
           {items.map((item) => (
             <Link
               key={item}
-              href={`/${item.toLowerCase()}`}
+              href={`#${item.toLowerCase()}`}
               className="text-sm sm:text-base text-gray-900 font-medium hover:text-black transition-colors"
             >
               {item}
@@ -57,7 +56,7 @@ export default function Header() {
             {items.map((item) => (
               <Link
                 key={item}
-                href={`/${item.toLowerCase()}`}
+                href={`#${item.toLowerCase()}`}
                 className="text-sm sm:text-base text-gray-900 font-medium hover:text-[#F7941D] transition-colors"
                 onClick={() => setIsOpen(false)}
               >

@@ -24,8 +24,8 @@ export default function Cards_Features() {
 
   return (
     <section className="w-full flex justify-center mt-16 px-4">
-      <div className="w-full max-w-6xl bg-gray-100 rounded-3xl shadow-sm px-8 py-10">
-            <div className="grid grid-cols-3 gap-8">
+      <div className="w-full max-w-6xl bg-gray-100 rounded-3xl shadow-sm px-2 sm:px-8 py-4 sm:py-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((f, i) => (
             <div
               key={i}
@@ -40,7 +40,8 @@ export default function Cards_Features() {
                 <h3 className="font-semibold text-gray-900 text-lg">
                   {f.title}
                 </h3>
-                <p className="text-gray-600 text-sm max-w-[220px]">{f.desc}</p>
+                {/*<p className="text-gray-600 text-sm max-w-[220px]">{f.desc}</p>*/}
+                <p className="text-gray-600 text-sm">{f.desc}</p>
               </div>
             </div>
           ))}
