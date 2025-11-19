@@ -10,10 +10,6 @@ module.exports = {
 
   theme: {
     extend: {
-      backgroundImage: {
-        landing: "url('/bg-pattern.jpg')",
-      },
-
       colors: {
         dominante: {
           forte: "#EDECE5",
