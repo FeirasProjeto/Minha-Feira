@@ -2,42 +2,60 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { set, useForm } from "react-hook-form";
+import { useUserStore } from "../context/user";
+import { use } from "react";
 import { TextField, IconButton, Alert } from "@mui/material";
 import { Eye, EyeClosed, Shield, Monitor, Lock, Activity } from "lucide-react";
 
+type inputs = {
+  email: string;
+  senha: string;
+};
+
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit } = useForm<inputs>();
+  const router = useRouter();
+  const { logaUsuario } = useUserStore();
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
 
-  const handleAdminLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  async function verificaLogin(data: inputs) {
     setLoading(true);
     setError("");
 
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
-          password,
+          email: data.email,
+          senha: data.senha,
         }),
       });
 
-      const data = await res.json();
+      if (res.status === 200) {
+        const dados = await res.json();
+        logaUsuario(dados);
 
-      if (!res.ok) {
-        setError(data.error || "Erro ao fazer login");
+        if(dados.admin === true) {
+          router.push("/admin/dashboard");
+        }
+
+        if(dados.admin === false) {
+          setError("Acesso negado");
+        }
+      }
+
+      if (res.status !== 200) {
+        setError("Erro ao fazer login");
         return;
       }
 
-      router.push("/admin/dashboard");
     } catch (err: any) {
       setError(err.message || "Erro de conexão");
     } finally {
@@ -47,20 +65,6 @@ export default function AdminLoginPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="fixed inset-0 bg-gradient-to-br from-[#1AA96E]/10 via-[#8031C5]/10 to-[#F4881F]/10"></div>
-      
-      <div className="fixed top-10 left-10 text-[#1AA96E]/10">
-        <Shield size={48} />
-      </div>
-      <div className="fixed top-20 right-20 text-[#8031C5]/10">
-        <Monitor size={56} />
-      </div>
-      <div className="fixed bottom-16 left-20 text-[#F4881F]/10">
-        <Lock size={52} />
-      </div>
-      <div className="fixed bottom-24 right-16 text-[#DF2A35]/10">
-        <Activity size={44} />
-      </div>
 
       {/* Main Content */}
       <div className="relative z-10 flex-1 flex items-center justify-center p-6">
@@ -77,7 +81,7 @@ export default function AdminLoginPage() {
             </p>
           </div>
 
-          <form onSubmit={handleAdminLogin} className="space-y-6">
+          <form onSubmit={handleSubmit(verificaLogin)} className="space-y-6">
             {error && (
               <Alert severity="error" className="bg-[#DF2A35]/20 text-white border border-[#DF2A35]/30">
                 <span className="flex items-center gap-2">
@@ -95,8 +99,7 @@ export default function AdminLoginPage() {
               </label>
               <TextField
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email")}
                 placeholder="seguranca@sistema.com"
                 required
                 fullWidth
@@ -135,8 +138,7 @@ export default function AdminLoginPage() {
               <div className="relative">
                 <TextField
                   type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  {...register("senha")}
                   placeholder="••••••••"
                   required
                   fullWidth
