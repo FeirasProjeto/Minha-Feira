@@ -1,9 +1,43 @@
+"use client";
+
 import Widget from "../../componentsAdmin/widgets";
 import Chart from "../../componentsAdmin/graficos";
 
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "@/app/context/user";
+
+
 export default function DashboardPage() {
+
+  const [feiras, setFeiras] = useState<TypeFeira[]>([]);
+
+  const { Usuario } = useUserStore();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    async function fetchFeiras() {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/feira?limit=1000`);
+      const feiras = await response.json();
+      setFeiras(feiras);
+    }
+
+    fetchFeiras();
+
+    console.log(feiras)
+  }, []);
+
+useEffect(() => {
+  console.log("Feiras atualizadas:", feiras);
+}, [feiras]);
+
+
   return (
     <div className="flex flex-col gap-6 p-4 sm:p-6">
+
+      <h1 className="text-2xl font-semibold">Dashboard</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Widget title="Usuários" value="124" />

@@ -1,13 +1,33 @@
-"use client";
-import { useState } from 'react';
 import { Menu } from 'lucide-react'; // Importe o ícone Menu
 
 import Sidebar from "../componentsAdmin/sidebar";
 import Header from "../componentsAdmin/header";
 import Breadcrumbs from "../componentsAdmin/breadcrumbs";
 
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useUserStore } from "@/app/context/user";
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  
+    const { Usuario } = useUserStore();
+  
+    const router = useRouter();
+
+    if (Usuario.admin === false || Object.keys(Usuario).length === 0) {
+      router.push("/login");
+      return null
+    }
+  
+    useEffect(() => {
+          // se o objeto Usuario estiver vazio, redireciona para a tela de login
+      if (Usuario.admin === false || Object.keys(Usuario).length === 0) {
+        router.push("/login");
+        return null
+      }
+    });
 
   // Função para fechar a sidebar (útil para o overlay ou links)
   const closeSidebar = () => setIsSidebarOpen(false);
@@ -18,9 +38,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* 1. SIDEBAR: Configuração Off-Canvas */}
       <div 
         className={`fixed inset-y-0 left-0 z-50 transform 
-                   ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-                   transition-transform duration-300 ease-in-out
-                   lg:relative lg:translate-x-0 lg:flex lg:flex-shrink-0`}
+                  ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+                  transition-transform duration-300 ease-in-out
+                  lg:relative lg:translate-x-0 lg:flex lg:flex-shrink-0`}
       >
         {/* Passamos closeSidebar para que os links dentro da Sidebar possam fechar o menu */}
         <Sidebar closeSidebar={closeSidebar} /> 
@@ -50,6 +70,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
         </Header>
         {/* ... Resto do Conteúdo ... */}
+        <main>{children}</main>
       </div>
     </div>
   );

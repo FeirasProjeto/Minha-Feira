@@ -10,27 +10,6 @@ import Faq from "../components/faq";
 import Final from "../components/final";
 
 export default function HomePage() {
-  const [feiras, setFeiras] = useState<TypeFeira[]>([]);
-  const [defaultFeiras, setDefault] = useState<TypeFeira[]>([]);
-
-  useEffect(() => {
-    const fetchFeiras = async () => {
-      const feiras = await getFeiras();
-      setFeiras(feiras);
-      setDefault(feiras);
-    };
-    fetchFeiras();
-  }, []);
-
-  const [open, setOpen] = useState(false);
-  const [selectedFeira, setSelectedFeira] = useState<TypeFeira>(
-    {} as TypeFeira
-  );
-
-  const openModal = (f: TypeFeira) => {
-    setSelectedFeira(f);
-    setOpen(true);
-  };
 
   return (
     <main className="flex-1">
