@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const closeSidebar = () => setIsSidebarOpen(false);
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
+    <div className="w-full flex min-h-screen bg-gray-900 text-white">
       
       {/* 1. SIDEBAR: Configuração Off-Canvas */}
       <div 
