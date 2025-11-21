@@ -1,3 +1,4 @@
+"use client";
 import { Menu } from 'lucide-react'; // Importe o ícone Menu
 
 import Sidebar from "../componentsAdmin/sidebar";
