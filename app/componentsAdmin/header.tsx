@@ -5,7 +5,7 @@ import { User } from "lucide-react";
 // O Header agora aceita 'children', que é o botão de menu hamburger do AdminLayout
 export default function HeaderAdmin({ children }) {
     return (
-        <header className="sticky top-0 z-30 flex items-center justify-between p-4 bg-gray-800 border-b border-gray-700 w-full">
+        <header className="sticky top-0 z-30 flex items-center justify-between bg-gray-800 border-b border-gray-700 w-full px-4 lg:pl-8 lg:pr-8">
 
             <div className="flex items-center gap-3">
 
