@@ -17,17 +17,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   
     const router = useRouter();
 
-    if (Usuario.admin === false || Object.keys(Usuario).length === 0) {
-      router.push("/login");
-      return null
-    }
+    // if (Usuario.admin === false || Object.keys(Usuario).length === 0) {
+    //   router.push("/login");
+    //   return null
+    // }
   
-    useEffect(() => {
-      if (Usuario.admin === false || Object.keys(Usuario).length === 0) {
-        router.push("/login");
-        return null
-      }
-    });
+    // useEffect(() => {
+    //   if (Usuario.admin === false || Object.keys(Usuario).length === 0) {
+    //     router.push("/login");
+    //     return null
+    //   }
+    // });
 
   // Função para fechar a sidebar
   const closeSidebar = () => setIsSidebarOpen(false);

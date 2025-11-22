@@ -2,24 +2,12 @@ import React, { useState } from "react";
 import { AgCharts } from "ag-charts-react";
 import { AgChartOptions } from "ag-charts-community";
 
-// Dados de exemplo para tags 
-export function getTagsData() {
-  return [
-    { tag: "Orgânico", quantidade: 45 },
-    { tag: "Vegano", quantidade: 32 },
-    { tag: "Sem Glúten", quantidade: 28 },
-    { tag: "Sem Lactose", quantidade: 25 },
-    { tag: "Natural", quantidade: 38 },
-    { tag: "Low Carb", quantidade: 22 },
-    { tag: "Sem Açúcar", quantidade: 19 },
-  ];
-}
 
 // Gráfico de Barras para Tags
-export const Chart2 = () => {
+export function Chart2({data}: any) {
   const [options, setOptions] = useState<AgChartOptions>({
     
-    data: getTagsData(),
+    data: data,
     background: {
       fill: 'transparent'
     },
@@ -67,20 +55,10 @@ export const Chart2 = () => {
   return <AgCharts options={options} style={{height: '100%'}}/>;
 };
 
-export function getData() {
-  return [
-    { asset: "Hortifruti", amount: 60000 },
-    { asset: "Padaria", amount: 40000 },
-    { asset: "Laticínios", amount: 7000 },
-    { asset: "Carnes", amount: 5000 },
-    { asset: "Bebidas", amount: 3000 },
-  ];
-}
-
 // Gráfico de Pizza para Categorias
-export const Chart = () => {
+export function Chart({data}: any) {
   const [options, setOptions] = useState<AgChartOptions>({
-    data: getData(),
+    data: data,
     background: {
       fill: 'transparent'
     },
@@ -100,7 +78,6 @@ export const Chart = () => {
         sectorLabel: {
           color: "#ffffff",
           fontWeight: "bold",
-          formatter: ({ value }) => `${(value / 1000).toFixed(0)}K`,
         },
       },
     ],
