@@ -30,7 +30,7 @@ export function ListaFeiras({ data, refresh }: any) {
           <div className="flex-shrink-0">
             <img
               className="w-12 h-12 rounded-lg object-cover border border-gray-200 dark:border-gray-700"
-              src={data.imagem}
+              src={data.imagem || "https://imgur.com/n2zBQh0.png"}
               alt={data.nome}
             />
           </div>
