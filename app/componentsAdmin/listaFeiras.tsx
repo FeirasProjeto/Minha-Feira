@@ -21,6 +21,29 @@ async function AprovaFeira(feiraId: string, refresh: () => void) {
   }
 
 }
+
+async function ReprovaFeira(feiraId: string, refresh: () => void) {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/reprovar/${feiraId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      alert('Erro ao reprovar feira');
+      return
+    }
+
+    alert('Feira reprovada com sucesso');
+    refresh();
+
+  } catch (error) {
+    console.error('Erro ao reprovar feira:', error);
+    alert('Erro ao reprovar feira');
+  }
+}
 export function ListaFeiras({ data, refresh }: any) {
   return (
     <div key={data.id} className="px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors duration-150">
@@ -70,6 +93,32 @@ export function ListaFeiras({ data, refresh }: any) {
               />
             </svg>
             Aprovar
+          </button>
+
+          {/* Botão Reprovar */}
+          <button
+            onClick={() => ReprovaFeira(data.id, refresh)}
+            className="
+      inline-flex items-center gap-2
+      px-3 py-2
+      bg-red-600 text-white
+      hover:bg-red-700
+      dark:bg-red-700 dark:hover:bg-red-800
+      rounded-lg
+      transition-all duration-200
+      font-medium
+      text-sm
+    "
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+            Reprovar
           </button>
         </div>
 
